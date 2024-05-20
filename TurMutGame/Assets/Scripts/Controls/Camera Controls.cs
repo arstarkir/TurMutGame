@@ -5,11 +5,12 @@ using UnityEngine;
 public class CameraControls : MonoBehaviour
 {
     [SerializeField] float speed = 1;
-    void Start()
-    {
-        
-    }
+    [SerializeField] float scrollStrength = 1;
 
+    void OnGUI()
+    {
+        transform.position -= Vector3.up * scrollStrength * Input.GetAxis("Mouse ScrollWheel");
+    }
     void FixedUpdate()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -19,6 +20,6 @@ public class CameraControls : MonoBehaviour
         mousePos.x -= Screen.width / 2;
         mousePos.z -= Screen.height / 2;
 
-        gameObject.transform.position -= mousePos*0.01f*speed*Time.deltaTime;
+        transform.position -= mousePos*0.01f*speed*Time.deltaTime;
     }
 }
