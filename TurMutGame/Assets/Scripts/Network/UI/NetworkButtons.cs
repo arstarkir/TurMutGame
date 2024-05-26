@@ -6,12 +6,30 @@ using UnityEngine.UI;
 
 public class NetworkButtons : MonoBehaviour
 {
-    public void OnHostBtnClick()
+    bool asHost;
+    public void OnHostBtnClick(GameObject gameObject)
     {
-        NetworkManager.Singleton.StartHost();
+        asHost = true;
+        gameObject.SetActive(!gameObject.active);
     }
-    public void OnClientBtnClick()
+    public void OnClientBtnClick(GameObject gameObject)
     {
-        NetworkManager.Singleton.StartClient();
+        asHost = false;
+        gameObject.SetActive(!gameObject.active);
     }
+    public void OnClickStartUkr()
+    {
+        if(asHost)
+            NetworkManager.Singleton.StartHost();
+        else
+            NetworkManager.Singleton.StartClient();
+    }
+    public void OnClickStartRus()
+    {
+        if (asHost)
+            NetworkManager.Singleton.StartHost();
+        else
+            NetworkManager.Singleton.StartClient();
+    }
+
 }
