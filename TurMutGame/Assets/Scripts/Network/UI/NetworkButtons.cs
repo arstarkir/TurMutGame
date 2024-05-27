@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NetworkButtons : MonoBehaviour
 {
@@ -20,18 +16,18 @@ public class NetworkButtons : MonoBehaviour
     }
     public void OnClickStartUkr()
     {
-        if(asHost)
-            NetworkManager.Singleton.StartHost();
+        if (asHost)
+            CustomNetworkManager.instance.CustomStartHost("Ukr");
         else
-            NetworkManager.Singleton.StartClient();
+            CustomNetworkManager.instance.CustomStartClient("Ukr");
         sideSelect.SetActive(!sideSelect.active);
     }
     public void OnClickStartRus()
     {
         if (asHost)
-            NetworkManager.Singleton.StartHost();
+            CustomNetworkManager.instance.CustomStartHost("Rus");
         else
-            NetworkManager.Singleton.StartClient();
+            CustomNetworkManager.instance.CustomStartClient("Rus");
         sideSelect.SetActive(!sideSelect.active);
     }
 

@@ -3,6 +3,20 @@ using UnityEngine;
 
 public class TeamView : NetworkBehaviour
 {
+
+    void TeamAssign(string tag)
+    {
+        if(gameObject.TryGetComponent<PlayerTeam>(out PlayerTeam pt))
+        {
+            gameObject.tag = tag;
+            if (tag == "Ukr")
+                pt.isUkr = true;
+            else
+                pt.isUkr = false;
+        }
+        NewPlayerJoin();
+    }
+
     void NewPlayerJoin()
     {
         GameObject[] rus = GameObject.FindGameObjectsWithTag("Rus");
@@ -20,10 +34,10 @@ public class TeamView : NetworkBehaviour
     }
     private void OnEnable()
     {
-        NetworkManager.Singleton.OnClientStarted += NewPlayerJoin;
+        CustomNetworkManager.instance.OnStarting += TeamAssign;
     }
     private void OnDisable()
     {
-        NetworkManager.Singleton.OnClientStarted -= NewPlayerJoin;
+        CustomNetworkManager.instance.OnStarting -= TeamAssign;
     }
 }

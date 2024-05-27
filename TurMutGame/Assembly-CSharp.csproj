@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerTeam.cs" />
     <Compile Include="Assets\Scripts\Controls\Camera Controls.cs" />
+    <Compile Include="Assets\Scripts\Network\CustomNetworkManager.cs" />
     <Compile Include="Assets\Scripts\Ukr\Area.cs" />
     <Compile Include="Assets\Scripts\Network\UI\NetworkButtons.cs" />
     <Compile Include="Assets\Scripts\Network\TeamView.cs" />
