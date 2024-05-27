@@ -46,7 +46,8 @@ public class CameraControls : MonoBehaviour
                 active.GetComponent<Renderer>().material = activeTrigger;
             }
             else
-                active.GetComponent<Renderer>().material = notActiveTrigger;
+                if(active != null)
+                    active.GetComponent<Renderer>().material = notActiveTrigger;
         }
     }
 }

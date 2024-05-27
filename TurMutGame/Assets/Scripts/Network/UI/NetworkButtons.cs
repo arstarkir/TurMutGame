@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class NetworkButtons : MonoBehaviour
 {
+    [SerializeField] GameObject sideSelect;
     bool asHost;
-    public void OnHostBtnClick(GameObject gameObject)
+    public void OnHostBtnClick()
     {
         asHost = true;
-        gameObject.SetActive(!gameObject.active);
+        sideSelect.SetActive(!sideSelect.active);
     }
-    public void OnClientBtnClick(GameObject gameObject)
+    public void OnClientBtnClick()
     {
         asHost = false;
-        gameObject.SetActive(!gameObject.active);
+        sideSelect.SetActive(!sideSelect.active);
     }
     public void OnClickStartUkr()
     {
@@ -23,6 +24,7 @@ public class NetworkButtons : MonoBehaviour
             NetworkManager.Singleton.StartHost();
         else
             NetworkManager.Singleton.StartClient();
+        sideSelect.SetActive(!sideSelect.active);
     }
     public void OnClickStartRus()
     {
@@ -30,6 +32,7 @@ public class NetworkButtons : MonoBehaviour
             NetworkManager.Singleton.StartHost();
         else
             NetworkManager.Singleton.StartClient();
+        sideSelect.SetActive(!sideSelect.active);
     }
 
 }
